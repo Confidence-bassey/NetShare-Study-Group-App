@@ -1,6 +1,7 @@
 package com.zealmobile.studygroup.services;
 
 import java.util.Date;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,10 @@ public class UserAccountService {
 		}
 	}
 	
-	
+
+	public Optional<UserAccount> getUserById(long id) {
+		return this._userRespository.findById(id);
+	}
 	
 	
 	
