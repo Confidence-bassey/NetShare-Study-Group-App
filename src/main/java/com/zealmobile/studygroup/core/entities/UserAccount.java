@@ -27,4 +27,10 @@ public class UserAccount {
 	private AccountType accountType;
 	private AccountStatus status;
 	
+	
+	public UserAccount() {}
+	public UserAccount withEmail(String email) {
+		this.email = email;
+		return this;
+	}
 }
