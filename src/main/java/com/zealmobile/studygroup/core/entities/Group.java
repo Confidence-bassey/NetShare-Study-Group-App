@@ -30,7 +30,7 @@ public class Group {
 	private String name;
 
 	@Column(name="owner_id")
-	private int ownerId;
+	private Long ownerId;
 
 	@Column(name="created_date")
 	private Date createDate;

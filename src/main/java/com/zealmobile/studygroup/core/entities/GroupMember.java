@@ -12,8 +12,11 @@ import javax.persistence.Table;
 import com.zealmobile.studygroup.core.models.enums.GroupMembershipStatus;
 import com.zealmobile.studygroup.core.models.enums.GroupMembershipType;
 
+import lombok.Data;
+
 @Entity
 @Table(name="group_users")
+@Data
 public class GroupMember {
 
     @Id
@@ -21,7 +24,7 @@ public class GroupMember {
     private int id;
 
     @Column(name = "user_id")
-    private int userId;
+    private Long userId;
 
     @Column(name="group_id")
     private int groupId;
