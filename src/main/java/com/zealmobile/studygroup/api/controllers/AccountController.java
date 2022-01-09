@@ -3,6 +3,7 @@ package com.zealmobile.studygroup.api.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,18 @@ public class AccountController {
 			return ResponseEntity.internalServerError().body(e.getMessage());
 			
 		}
+	}
+
+	@GetMapping("")
+	public ResponseEntity<?> getAccounts(){
+		try {
+			var userAccountsList = this._accountService.getUserAccounts();
+			return ResponseEntity.ok(userAccountsList);
+		} catch (Exception e) {
+			// TODO: handle exception by logging it via appropriate logging impl.
+			return ResponseEntity.internalServerError().body(e.getMessage());
+			
+		}	
 	}
 	
 
