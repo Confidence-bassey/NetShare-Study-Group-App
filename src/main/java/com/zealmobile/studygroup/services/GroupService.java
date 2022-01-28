@@ -18,6 +18,8 @@ import com.zealmobile.studygroup.dao.respositories.GroupMembershipRepository;
 import com.zealmobile.studygroup.dao.respositories.GroupRepository;
 import com.zealmobile.studygroup.dao.respositories.UserRespository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,8 @@ public class GroupService {
     private GroupMembershipRepository _groupMembershipRepository;
     private GroupRepository _groupRepository;
     private UserRespository _userAccountRepository;
+
+    Logger logs = LoggerFactory.getLogger("GroupService.class");
 
     @Autowired
     public GroupService(GroupMembershipRepository groupMembershipRepository, UserRespository repo,
@@ -42,7 +46,7 @@ public class GroupService {
         try{
             Optional<UserAccount> userAccount = _userAccountRepository.findById(groupInfo.getOwnerId());
             if(!userAccount.isPresent() || userAccount.get().getStatus() !=AccountStatus.Active)
-                return new CreateGroupResult(false, String.format("User with Id %d waas not found or has inactive account", groupInfo.getOwnerId()));
+                return new CreateGroupResult(false, String.format("User with Id %d was not found or has an inactive account", groupInfo.getOwnerId()));
 
             Group groupToCreate = new Group();
             groupToCreate.setOwnerId(groupInfo.getOwnerId());
@@ -62,7 +66,8 @@ public class GroupService {
 
         }
         catch(Exception exception) {
-            //TODO: Log this exception
+            // Exception logged
+            logs.info("group creation visited");
             throw exception;
         }
 
@@ -76,7 +81,8 @@ public class GroupService {
             return groupMember.get().getMembershipType() == GroupMembershipType.Admin;
         }
         catch(Exception exception) {
-            //Todo: Log exception
+            //Exception logged
+            logs.info("GroupAdmin verification method visited");
             return false;
         }
 
