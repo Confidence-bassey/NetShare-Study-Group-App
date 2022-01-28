@@ -83,5 +83,4 @@ public class AccountController {
 		
 		return ResponseEntity.ok(String.format("Thank you %s,\nYour group study account is now active. Go ahead anmd enjoy", targetAccount.get().getFirstName()));
 	}
-
 }

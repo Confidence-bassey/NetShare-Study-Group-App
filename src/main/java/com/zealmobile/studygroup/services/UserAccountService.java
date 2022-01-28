@@ -2,10 +2,14 @@ package com.zealmobile.studygroup.services;
 
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.mail.SimpleMailMessage;
@@ -27,6 +31,9 @@ import com.zealmobile.studygroup.dao.respositories.UserRespository;
 
 @Service
 public class UserAccountService {
+
+
+	Logger _logger = LoggerFactory.getLogger(UserAccountService.class);
 
 	@Autowired
 	private UserRespository _userRespository;
@@ -66,6 +73,15 @@ public class UserAccountService {
 	public Optional<UserAccount> getUserById(long id) {
 		return this._userRespository.findById(id);
 	}
+
+	public List<UserAccount> getUserAccounts() {
+		try{
+			return this._userRespository.findAll();
+		}
+		catch (Exception exce) {
+			throw exce;
+		}
+	}
 	
 	public List<UserAccount> getUserAccounts() {
 		try{
@@ -93,8 +109,10 @@ public class UserAccountService {
 		account.setFirstName(userAccountPayload.getFirstName());
 		account.setLastName(userAccountPayload.getLastName());
 		account.setEmail(userAccountPayload.getEmail());
+		account.setPhoneNumber(userAccountPayload.getPhoneNumber());
 		account.setStatus(AccountStatus.New);
-		account.setUserId(UUID.randomUUID());
+		account.setUserId(UUID.randomUUID().toString());
+		_logger.info("set account uuid is: "+ account.getUserId());
 		
 		return account;
 	}
