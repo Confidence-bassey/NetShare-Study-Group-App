@@ -1,7 +1,7 @@
 package com.zealmobile.studygroup.core.entities;
 
 import java.util.Date;
-import java.util.UUID;
+//import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +25,7 @@ public class UserAccount {
 	private long id;
 	
 	@Column(name = "user_id")
-	private UUID userId;
+	private String userId;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -47,6 +47,9 @@ public class UserAccount {
 	
 	@Column(name = "account_status")
 	private AccountStatus status;
+
+	@Column(name="phone_number")
+	private String phoneNumber;
 	
 	
 	public UserAccount() {}
