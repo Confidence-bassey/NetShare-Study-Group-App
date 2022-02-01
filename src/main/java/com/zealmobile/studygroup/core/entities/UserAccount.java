@@ -1,7 +1,7 @@
 package com.zealmobile.studygroup.core.entities;
 
 import java.util.Date;
-import java.util.UUID;
+//import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
