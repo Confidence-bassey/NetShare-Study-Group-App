@@ -73,7 +73,7 @@ public class UserAccountService {
 	public Optional<UserAccount> getUserById(long id) {
 		return this._userRespository.findById(id);
 	}
-	
+
 	public List<UserAccount> getUserAccounts() {
 		try{
 			return this._userRespository.findAll();
@@ -82,6 +82,7 @@ public class UserAccountService {
 			throw exce;
 		}
 	}
+	
 
 	public Optional<UserAccount> getAccountAccountByEmail(String emialAddress) {
 		return this._userRespository.findOne(Example.of(new UserAccount().withEmail(emialAddress)));	
