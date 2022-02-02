@@ -83,14 +83,6 @@ public class UserAccountService {
 		}
 	}
 	
-	public List<UserAccount> getUserAccounts() {
-		try{
-			return this._userRespository.findAll();
-		}
-		catch (Exception exce) {
-			throw exce;
-		}
-	}
 
 	public Optional<UserAccount> getAccountAccountByEmail(String emialAddress) {
 		return this._userRespository.findOne(Example.of(new UserAccount().withEmail(emialAddress)));	
