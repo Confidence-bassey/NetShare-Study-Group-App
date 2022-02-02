@@ -73,15 +73,6 @@ public class UserAccountService {
 	public Optional<UserAccount> getUserById(long id) {
 		return this._userRespository.findById(id);
 	}
-
-	public List<UserAccount> getUserAccounts() {
-		try{
-			return this._userRespository.findAll();
-		}
-		catch (Exception exce) {
-			throw exce;
-		}
-	}
 	
 	public List<UserAccount> getUserAccounts() {
 		try{
