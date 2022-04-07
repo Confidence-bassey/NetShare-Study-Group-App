@@ -4,9 +4,7 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,13 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.mail.SimpleMailMessage;
 
-//port org.springframework.mail.SimpleMailMessage;
-
-//import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.zealmobile.studygroup.core.entities.UserAccount;
 import com.zealmobile.studygroup.core.models.dtos.CreateUserResult;
 import com.zealmobile.studygroup.core.models.dtos.NewUserAccountPayload;
@@ -74,15 +66,6 @@ public class UserAccountService {
 		return this._userRespository.findById(id);
 	}
 
-	public List<UserAccount> getUserAccounts() {
-		try{
-			return this._userRespository.findAll();
-		}
-		catch (Exception exce) {
-			throw exce;
-		}
-	}
-	
 	public List<UserAccount> getUserAccounts() {
 		try{
 			return this._userRespository.findAll();
